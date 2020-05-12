@@ -1,7 +1,7 @@
 <template>
     <div class="model-test-child">
         <!--<p>{{ value.name }}</p>-->
-        <model-test-child-a v-model="$attrs.value"></model-test-child-a>
+        <model-test-child-a v-model="info"></model-test-child-a>
     </div>
 </template>
 
@@ -16,11 +16,14 @@
             ModelTestChildA
         },
 
-        // props: {
-        //     value: {
-        //         required: true
-        //     }
-        // }
+        props: {
+            info: {
+                type: Object
+            }
+            // value: {
+            //     required: true
+            // }
+        },
 
         mounted() {
             // this.$emit('input', this.value);

@@ -1,7 +1,8 @@
 <template>
     <div class="model-test-child-wrapper">
         <p>{{ info.name }}</p>
-        <model-test-child v-model="info"></model-test-child>
+        <!--<model-test-child v-model="info"></model-test-child>-->
+        <model-test-child :info="testData"></model-test-child>
 
         <div v-if="info.age === 14">**********</div>
     </div>
@@ -21,6 +22,15 @@
         props: {
             info: {
                 type: Object
+            }
+        },
+
+        data() {
+            return {
+                testData: {
+                    test: 'test',
+                    age: 12
+                }
             }
         },
 

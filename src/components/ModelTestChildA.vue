@@ -1,5 +1,6 @@
 <template>
     <div class="child-a">
+        <p>{{ value.age }} --- {{ value.test }}</p>
         <div @click="select">ModelTestChildA</div>
     </div>
 </template>

@@ -29,6 +29,16 @@ const routes = [
         path: '/model-test',
         name: 'ModelTest',
         component: () => import('../views/ModelTest.vue')
+    },
+    {
+        path: '/href-test',
+        name: 'ModelTest',
+        component: () => import('../views/href-test/href-test.vue')
+    },
+    {
+        path: '/news-carousel',
+        name: 'NewsCarousel',
+        component: () => import('../views/news-carousel.vue')
     }
 ]
 

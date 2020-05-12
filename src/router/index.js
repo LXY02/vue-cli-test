@@ -39,7 +39,13 @@ const routes = [
         path: '/news-carousel',
         name: 'NewsCarousel',
         component: () => import('../views/news-carousel.vue')
+    },
+    {
+        path: '/nav-skew',
+        name: 'NavSkew',
+        component: () => import('../views/nav-skew.vue')
     }
+
 ]
 
 const router = new VueRouter({

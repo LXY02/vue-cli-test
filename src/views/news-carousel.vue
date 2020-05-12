@@ -28,6 +28,8 @@
         },
 
         mounted() {
+            const targetCarousel = this.$refs.carousel[0];
+            targetCarousel.style.opacity = .45;
             this.interval = setInterval(this.scroll, 2500);
         },
 
@@ -41,19 +43,29 @@
             scroll() {
                 const carouselContent = this.$refs.carouselContent;
                 carouselContent.style.transition = 'all 1250ms linear';
-                carouselContent.style.marginTop = '-33px';
+                carouselContent.style.marginTop = '-44px';
                 const targetCarousel = this.$refs.carousel[0];
                 targetCarousel.style.transition = 'all 500ms ease-in';
                 targetCarousel.style.opacity = 0;
-
+                const nextCarousel = this.$refs.carousel[1];
+                nextCarousel.style.transition = 'all 500ms ease-in';
+                nextCarousel.style.opacity = .45;
+                console.log('---- ', targetCarousel.style.opacity);
                 setTimeout(() => {
                     carouselContent.style.transition = 'none';
                     carouselContent.style.marginTop = '0';
-                    const firstCarousel = this.list.shift();
-                    this.list.push(firstCarousel);
-                    const targetCarousel = this.$refs.carousel[0];
-                    targetCarousel.style.transition = 'none';
-                    targetCarousel.style.opacity = 1;
+                    const targetCarousel = this.list.shift();
+                    this.list.push(targetCarousel);
+                    // const targetCarousel = this.$refs.carousel[this.$refs.carousel.length - 1];
+                    const firstCarousel = this.$refs.carousel[0];
+                    firstCarousel.style.transition = 'none';
+                    firstCarousel.style.opacity = .45;
+                    const nextCarousel = this.$refs.carousel[1];
+                    nextCarousel.style.transition = 'none';
+                    nextCarousel.style.opacity = 1;
+                    // const targetCarousel = this.$refs.carousel[this.$refs.carousel.length - 1];
+                    // targetCarousel.style.transition = 'none';
+                    // targetCarousel.style.opacity = 1;
                 }, 1250);
             }
         }
@@ -71,6 +83,9 @@
     .carousel-content {
         .carousel {
             margin: 10px;
+            height: 34px;
+            box-sizing: border-box;
+            line-height: 34px;
             opacity: 1;
             background-color: #7587ff;
         }

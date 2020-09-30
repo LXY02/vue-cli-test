@@ -1,7 +1,7 @@
 <template>
     <div class="model-test-child">
         <!--<p>{{ value.name }}</p>-->
-        <model-test-child-a v-model="info"></model-test-child-a>
+        <model-test-child-a v-model="info" :info-sync.sync="infoSync"></model-test-child-a>
     </div>
 </template>
 
@@ -17,12 +17,22 @@
         },
 
         props: {
-            info: {
-                type: Object
-            }
+            // info: {
+            //     type: Object
+            // }
             // value: {
             //     required: true
             // }
+            test: {
+                type: Boolean
+            }
+        },
+
+        data() {
+            return {
+                info: {},
+                infoSync: {}
+            }
         },
 
         mounted() {

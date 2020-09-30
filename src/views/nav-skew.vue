@@ -1,5 +1,7 @@
 <template>
     <div>
+        <test-icon iconClass="icon"></test-icon>
+
         <div class="nav-wrapper">
             <div
                 v-for="(nav, index) in list"
@@ -13,8 +15,13 @@
 </template>
 
 <script>
+    import TestIcon from '../components/test-icon';
     export default {
         name: 'NavSkew',
+
+        components: {
+            TestIcon
+        },
 
         data() {
             return {

@@ -1,23 +1,26 @@
 <template>
     <div class="model-test">
         <p>model-test</p>
-        <model-test-child-wrapper
-            v-for="(item, index) in arr" :key="index" :info="item"
-            :test="test"
-        >
-        </model-test-child-wrapper>
+        <!--<model-test-child-wrapper-->
+            <!--v-for="(item, index) in arr" :key="index" :info="item"-->
+            <!--:test="test"-->
+        <!--&gt;-->
+        <!--</model-test-child-wrapper>-->
+        <model-test-child test/>
     </div>
 </template>
 
 <script>
 
-    import ModelTestChildWrapper from '../components/ModelTestChildWrapper';
+    // import ModelTestChildWrapper from '../components/ModelTestChildWrapper';
+    import ModelTestChild from '../components/ModelTestChild';
 
     export default {
         name: 'ModelTest',
 
         components: {
-            ModelTestChildWrapper
+            // ModelTestChildWrapper
+            ModelTestChild
         },
 
         data() {
@@ -34,6 +37,6 @@
 
 </script>
 
-<style lang='scss' scoped>
+<style lang='stylus' scoped>
 
 </style>

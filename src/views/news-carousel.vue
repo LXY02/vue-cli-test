@@ -50,22 +50,17 @@
                 const nextCarousel = this.$refs.carousel[1];
                 nextCarousel.style.transition = 'all 500ms ease-in';
                 nextCarousel.style.opacity = .45;
-                console.log('---- ', targetCarousel.style.opacity);
                 setTimeout(() => {
                     carouselContent.style.transition = 'none';
                     carouselContent.style.marginTop = '0';
                     const targetCarousel = this.list.shift();
                     this.list.push(targetCarousel);
-                    // const targetCarousel = this.$refs.carousel[this.$refs.carousel.length - 1];
                     const firstCarousel = this.$refs.carousel[0];
                     firstCarousel.style.transition = 'none';
                     firstCarousel.style.opacity = .45;
                     const nextCarousel = this.$refs.carousel[1];
                     nextCarousel.style.transition = 'none';
                     nextCarousel.style.opacity = 1;
-                    // const targetCarousel = this.$refs.carousel[this.$refs.carousel.length - 1];
-                    // targetCarousel.style.transition = 'none';
-                    // targetCarousel.style.opacity = 1;
                 }, 1250);
             }
         }

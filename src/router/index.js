@@ -10,7 +10,7 @@ const routes = [
     {
         path: '/',
         name: 'Matching',
-        redirect: '/scale-scroll'
+        redirect: '/about'
         // component: Matching
     },
     {

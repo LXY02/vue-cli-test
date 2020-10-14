@@ -85,6 +85,11 @@ const routes = [
         path: '/scale-scroll',
         name: 'ScaleScroll',
         component: () => import('../views/scale-scroll.vue')
+    },
+    {
+        path: '/video-test',
+        name: 'VideoTest',
+        component: () => import('../views/video/video-test.vue')
     }
 ]
 

@@ -9,23 +9,23 @@
         <!--<my-video :src="videoSrc"/>-->
         <p>lalalalal</p>
         <!--<origin-video/>-->
-        <video-capture :src="videoSrc"/>
+        <!--<video-capture :src="videoSrc"/>-->
     </div>
 </template>
 
 <script>
 
-    import MyVideo from './component/my-video';
-    import OriginVideo from './component/origin-video';
-    import VideoCapture from './component/video-capture';
+    // import MyVideo from './component/my-video';
+    // import OriginVideo from './component/origin-video';
+    // import VideoCapture from './component/video-capture';
 
     export default {
         name: 'VideoTest',
 
         components: {
-            MyVideo,
-            OriginVideo,
-            VideoCapture
+            // MyVideo,
+            // OriginVideo,
+            // VideoCapture
         },
 
         data() {

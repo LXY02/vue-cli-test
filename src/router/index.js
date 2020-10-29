@@ -90,6 +90,38 @@ const routes = [
         path: '/video-test',
         name: 'VideoTest',
         component: () => import('../views/video/video-test.vue')
+    },
+    {
+        path: '/inner-scroll',
+        name: 'InnerScroll',
+        component: () => import('../views/inner-scroll.vue')
+    },
+    {
+        path: '/antv',
+        name: 'Antv',
+        component: () => import('../views/antv'),
+        children: [
+            {
+                name: 'Antv G6',
+                path: '/antv/g6',
+                component: () => import('../views/antv/component/antv-g6.vue')
+            },
+            {
+                name: 'Antv Basic',
+                path: '/antv/basic',
+                component: () => import('../views/antv/component/basic.vue')
+            },
+            {
+                name: 'Antv Dynamic Loading Data',
+                path: '/antv/dynamic-loading-data',
+                component: () => import('../views/antv/component/dynamic-loading-data.vue')
+            },
+            {
+                name: 'Antv Behavior Test',
+                path: '/antv/behavior-test',
+                component: () => import('../views/antv/component/behavior-test.vue')
+            },
+        ]
     }
 ]
 

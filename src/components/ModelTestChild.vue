@@ -1,7 +1,9 @@
 <template>
     <div class="model-test-child">
         <!--<p>{{ value.name }}</p>-->
-        <model-test-child-a v-model="info" :info-sync.sync="infoSync"></model-test-child-a>
+        <!--<model-test-child-a v-model="info" :info-sync.sync="infoSync"></model-test-child-a>-->
+        <model-test-child-a v-model="value.age"></model-test-child-a>
+        <p @click="testFunc">test-------------</p>
     </div>
 </template>
 
@@ -20,9 +22,9 @@
             // info: {
             //     type: Object
             // }
-            // value: {
-            //     required: true
-            // }
+            value: {
+                required: true
+            },
             test: {
                 type: Boolean
             }
@@ -30,7 +32,14 @@
 
         data() {
             return {
-                info: {},
+                ttt: 111,
+                info: {
+                    name: 'test',
+                    age: {
+                        now: 13311,
+                        type: 'lal'
+                    }
+                },
                 infoSync: {}
             }
         },
@@ -38,7 +47,17 @@
         mounted() {
             // this.$emit('input', this.value);
             console.log('**** ', this.$attrs);
-        }
+        },
+
+        methods: {
+            testFunc() {
+                console.log('test-child ');
+                this.$emit('input', {
+                    ...this.value,
+                    test: 'test' + Math.random()
+                })
+            }
+        },
     };
 
 </script>

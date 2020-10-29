@@ -1,17 +1,19 @@
 <template>
     <div class="child-a">
-        <p>{{ value.age }} --- {{ value.test }}</p>
-        <div @click="select">ModelTestChildA</div>
-        <p @click="changeA">click me</p>
-        <ul v-if="value.arr">
-            <li v-for="(num) in value.arr" :key="num">{{ num }}</li>
-        </ul>
-        <hr>
-        <p @click="syncTest">sync - 1</p>
-        <p @click="syncTest2">sync - 2</p>
-        <ul v-if="infoSync.arr">
-            <li v-for="(num) in infoSync.arr" :key="num.name">sync-{{ num.name }}-{{ num.age }}</li>
-        </ul>
+        <!--<p>{{ value.now }} -&#45;&#45;</p>-->
+        <p>{{ value.now }}---</p>
+        <p @click="test">model test</p>
+        <!--<div @click="select">ModelTestChildA</div>-->
+        <!--<p @click="changeA">click me</p>-->
+        <!--<ul v-if="value.arr">-->
+            <!--<li v-for="(num) in value.arr" :key="num">{{ num }}</li>-->
+        <!--</ul>-->
+        <!--<hr>-->
+        <!--<p @click="syncTest">sync - 1</p>-->
+        <!--<p @click="syncTest2">sync - 2</p>-->
+        <!--<ul v-if="infoSync.arr">-->
+            <!--<li v-for="(num) in infoSync.arr" :key="num.name">sync-{{ num.name }}-{{ num.age }}</li>-->
+        <!--</ul>-->
     </div>
 </template>
 
@@ -58,6 +60,14 @@
             syncTest2() {
                 this.infoSync.arr[1].name='ccc';
                 this.$emit('update:infoSync', this.infoSync)
+            },
+
+            test() {
+                console.log('test');
+                this.$emit('input', {
+                    ...this.value,
+                    now: Math.random()
+                })
             }
         }
     };

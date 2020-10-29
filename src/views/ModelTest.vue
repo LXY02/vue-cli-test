@@ -6,7 +6,7 @@
             <!--:test="test"-->
         <!--&gt;-->
         <!--</model-test-child-wrapper>-->
-        <model-test-child test/>
+        <model-test-child v-model="testO.test"/>
     </div>
 </template>
 
@@ -25,7 +25,16 @@
 
         data() {
             return {
-                test: 123,
+                testO: {
+                    origin: 'o',
+                    test: {
+                        name: 'test',
+                        age: {
+                            now: 111,
+                            type: 'lal'
+                        }
+                    }
+                },
                 arr: [
                     {name: 'aaa', age: 10},
                     {name: 'bb', age: 12},

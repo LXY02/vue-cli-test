@@ -1,7 +1,10 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <p @click="test">reject test</p>
+    <div class="test">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
   </div>
 </template>
 
@@ -9,27 +12,35 @@
 
   export default {
       mounted() {
-          window.addEventListener('error', args => {
-                  console.log(
-                      'error event:', args
-                  );
-                  return true;
-              },
-              true // 利用捕获方式
-          );
 
-          // 如果“unhandledrejection”事件处理程序源自不同的脚本原点,则会被忽略
-          window.addEventListener("unhandledrejection", e => {
-              console.log('unhandledrejection---- ',e);
-              throw e.reason
-          });
       },
 
       methods: {
-          test() {
-              Promise.reject('lalal')
-          }
+
       },
   }
 
 </script>
+
+<style lang="stylus" rel="stylesheet/scss" scoped>
+  .test {
+    display flex
+    width: 100%
+    height: 80px
+    background: linear-gradient(to bottom, #00f 50%, #0f0 50%);
+
+    .left {
+      flex 1
+      height 80px
+      border-radius 0 20px 0 0
+      background-color: #0f0
+    }
+
+    .right {
+      width 100px
+      height 80px
+      background-color #00f
+      border-radius 0 0 0 20px
+    }
+  }
+</style>

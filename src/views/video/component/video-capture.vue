@@ -34,7 +34,7 @@
                 // console.log('---', src);
             },
 
-            createVideoCapture(file) {
+            createVideoCapture() {
                 // const canvas = document.createElement('canvas');
                 // const ctx = canvas.getContext('2d');
                 // ctx.drawImage(this.$refs.video, 0, 0);

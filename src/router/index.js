@@ -121,6 +121,21 @@ const routes = [
                 path: '/antv/behavior-test',
                 component: () => import('../views/antv/component/behavior-test.vue')
             },
+            {
+                name: 'Antv File Tree',
+                path: '/antv/file-tree',
+                component: () => import('../views/antv/component/file-tree/file-tree.vue')
+            },
+            {
+                name: 'Antv Customer',
+                path: '/antv/customer',
+                component: () => import('../views/antv/component/customer/customer.vue')
+            },
+            {
+                name: 'Antv Customer Loading',
+                path: '/antv/customer-dynamic-loading',
+                component: () => import('../views/antv/component/customer-dynamic-loading.vue')
+            }
         ]
     }
 ]

@@ -20,6 +20,8 @@
 
     import {originData, originData2} from './constant/data';
 
+    import './constant/customer';
+
     const graphData = {
         // isRoot: true,
         id: 'Root',
@@ -102,27 +104,6 @@
 
     // const data = originData.body[0];
     const data = originData2.body[0];
-    const res = [];
-
-    // const test = (testData) => {
-    //     const target = {
-    //         id: testData.id,
-    //         content: testData.content
-    //     };
-    //
-    //     res.push(target);
-    //
-    //     if (testData.children) {
-    //         for (let child of testData.children) {
-    //             test(child);
-    //         }
-    //     }
-    // };
-    //
-    // test(data);
-    //
-    // console.log('res ', res);
-    // console.log('uniq ', _.uniq(res, (item) => item.id));
 
     const getTreeNode = (root, targetKey, targetValue) => {
         const isInValid = value => [null, undefined].includes(value);
@@ -142,24 +123,6 @@
         }
     };
 
-    G6.registerBehavior('click-remove-node', {
-        getEvents() {
-            // The event is canvas:click, the responsing function is onClick
-            return {
-                'node:click': 'onClick',
-            };
-        },
-
-        onClick: (event) => {
-            const item = event.item;
-            const parentNode = getTreeNode(this.graphData, 'parentId', item.parentId);
-
-            console.log('------------ ', this.graphData, parentNode);
-            return;
-            this.graph.removeItem(item, true);
-        }
-    });
-
     export default {
         name: 'dynamic-loading-data',
 
@@ -174,8 +137,7 @@
 
         async mounted() {
             // await this.getData();
-            const {default: customerNode} = await import('./constant/customer-node');
-            console.log('res ', customerNode);
+            const {default: customerNode} = await import('./constant/customer-2');
             customerNode(G6);
             this.initGraph();
         },
@@ -210,16 +172,10 @@
                     // fitView: true,
                     fitView: true,
                     defaultNode: {
-                        type: 'crect',
+                        type: 'file-node',
                     },
-                    // defaultEdge: {
-                    //     type: 'cubic-horizontal',
-                    //     style: {
-                    //         stroke: '#A3B1BF',
-                    //     },
-                    // },
                     layout: {
-                        type: 'compactBox',
+                        type: 'indented',
                         direction: 'LR',
                         fixedRoot: true,
                         // defalutPosition: [0, 800],
@@ -270,7 +226,7 @@
                 graph.edge(function () {
                     i++;
                     return {
-                        type: 'cubic-horizontal',
+                        type: 'step-line',
                         color: '#A3B1BF',
                         // label: i,
                     };

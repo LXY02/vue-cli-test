@@ -2003,7 +2003,7 @@ export const originData2 = {
         "content": "疾病",
         "nodeType": "DISEASE",
         children: [...new Array(50)].map((val, index) => ({
-           id: 'test'+index,
+            id: 'test'+index,
             children: []
         }))
     }]

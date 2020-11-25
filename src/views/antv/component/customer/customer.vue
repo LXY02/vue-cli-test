@@ -18,7 +18,15 @@
 
         methods: {
             initGraph() {
-                
+                const width = document.getElementById('container').scrollWidth;
+                const height = document.getElementById('container').scrollHeight || document.documentElement.clientHeight - 200;
+
+                const graph = new G6.TreeGraph({
+                    container: 'container',
+                    width,
+                    height,
+
+                });
             }
         },
     };

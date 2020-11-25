@@ -37,19 +37,20 @@
         draw: function draw(cfg, group) {
             const keyShape = group.addShape('rect', {
                 attrs: {
-                    x: 10,
+                    x: 0,
                     y: -12,
-                    fill: '#fff',
+                    fill: '#bffff7',
                     stroke: null,
                 },
             });
+
             let isLeaf = false;
 
             if (cfg.collapsed) {
                 group.addShape('marker', {
                     attrs: {
-                        symbol: 'triangle',
-                        x: 4,
+                        symbol: 'circle',
+                        x: 0,
                         y: -2,
                         r: 4,
                         fill: '#666',
@@ -60,7 +61,7 @@
                 group.addShape('marker', {
                     attrs: {
                         symbol: 'triangle-down',
-                        x: 4,
+                        x: 0,
                         y: -2,
                         r: 4,
                         fill: '#666',
@@ -71,27 +72,18 @@
                 isLeaf = true;
             }
 
-            group.addShape('text', {
+            const shape = group.addShape('text', {
                 attrs: {
                     x: 15,
                     y: 4,
                     text: cfg.name,
-                    fill: '#666',
+                    fill: '#ff4532',
                     fontSize: 16,
                     textAlign: 'left',
                 },
                 name: 'text-shape',
             });
 
-            const shape = group.addShape('circle', {
-                attrs: {
-                    x: 15,
-                    y: 15,
-                    fill: '#edaad0',
-                    stroke: '#ff4532'
-                },
-                name: 'circle-shape',
-            });
             const bbox = shape.getBBox();
             let backRectW = bbox.width;
             let backRectX = keyShape.attr('x');

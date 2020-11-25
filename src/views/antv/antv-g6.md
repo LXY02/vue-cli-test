@@ -8,3 +8,5 @@ addShape: 'text'  'rect' 'path' 'marker'
 
 ​      边的基类：single-line
 
+- addShape文档：https://www.yuque.com/antv/g6/ffzwfp
+

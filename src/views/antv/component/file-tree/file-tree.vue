@@ -87,6 +87,29 @@
             const bbox = shape.getBBox();
             let backRectW = bbox.width;
             let backRectX = keyShape.attr('x');
+
+            group.addShape('circle', {
+                attrs: {
+                    x: bbox.maxX + 10,
+                    y: (bbox.minY + bbox.maxY) / 2,
+                    r: 5,
+                    stroke: '#000',
+                },
+                name: 'circle-shape',
+                draggable: true,
+            });
+
+            group.addShape('circle', {
+                attrs: {
+                    x: bbox.maxX + 30,
+                    y: (bbox.minY + bbox.maxY) / 2,
+                    r: 5,
+                    stroke: '#000',
+                },
+                name: 'circle-shape',
+                draggable: true,
+            });
+
             if (!isLeaf) {
                 backRectW += 8;
                 backRectX -= 15;

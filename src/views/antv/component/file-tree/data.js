@@ -5,7 +5,7 @@ export const data = {
         {
             id: '1-1',
             name: 'behavior',
-            children: [],
+            // children: [],
         },
         {
             id: '1-3',
@@ -14,12 +14,12 @@ export const data = {
                 {
                     id: '1-3-1',
                     name: 'controller',
-                    children: [],
+                    // children: [],
                 },
                 {
                     id: '1-3-2',
                     name: 'controller',
-                    children: [],
+                    // children: [],
                 },
                 {
                     id: '1-3-3',
@@ -28,12 +28,12 @@ export const data = {
                         {
                             id: '1-4-1',
                             name: 'controller',
-                            children: [],
+                            // children: [],
                         },
                         {
                             id: '1-4-2',
                             name: 'controller',
-                            children: [],
+                            // children: [],
                         },
                     ],
                 },
@@ -42,7 +42,7 @@ export const data = {
         {
             id: '1-5',
             name: 'item',
-            children: [],
+            // children: [],
         },
         {
             id: '1-6',
@@ -51,14 +51,14 @@ export const data = {
                 {
                     id: '1-6-2',
                     name: 'extend',
-                    children: [],
+                    // children: [],
                 },
             ],
         },
         {
             id: '1-7',
             name: 'util',
-            children: [],
+            // children: [],
         },
     ],
 };

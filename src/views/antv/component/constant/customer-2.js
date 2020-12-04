@@ -1,82 +1,68 @@
+const fontSize = 15;
+
 export default G6 => {
-    G6.registerNode('file-node', {
-        draw: function draw(cfg, group) {
-            const keyShape = group.addShape('rect', {
+    G6.registerNode('crect', {
+        draw: (cfg, group) => {
+            const width = cfg.id.length * 10;
+            const rect = group.addShape('rect', {
                 attrs: {
-                    x: 10,
-                    y: -12,
-                    fill: '#fff',
-                    stroke: null,
+                    x: 0,
+                    y: -10,
+                    ...cfg.style,
+                    width,
+                    height: 20,
+                    lineWidth: 0,
+                    opacity: 0,
                 },
+                name: 'rect-shape',
+                draggable: true,
             });
-            let isLeaf = false;
-            if (cfg.collapsed) {
-                group.addShape('marker', {
-                    attrs: {
-                        symbol: 'triangle',
-                        x: 4,
-                        y: -2,
-                        r: 4,
-                        fill: '#666',
-                    },
-                    name: 'marker-shape',
-                });
-            } else if (cfg.children && cfg.children.length > 0) {
-                group.addShape('marker', {
-                    attrs: {
-                        symbol: 'triangle-down',
-                        x: 4,
-                        y: -2,
-                        r: 4,
-                        fill: '#666',
-                    },
-                    name: 'marker-shape',
-                });
-            } else {
-                isLeaf = true;
-            }
-            const shape = group.addShape('text', {
+            const label = group.addShape('text', {
                 attrs: {
-                    x: 15,
-                    y: 4,
                     text: cfg.id,
-                    fill: '#666',
-                    fontSize: 16,
-                    textAlign: 'left',
+                    fill: '#ccc',
+                    fontSize,
+                    x: 0,
+                    y: 0,
                 },
-                name: 'text-shape',
+                name: 'label-shape',
+                draggable: true,
             });
-            const bbox = shape.getBBox();
-            let backRectW = bbox.width;
-            let backRectX = keyShape.attr('x');
-            if (!isLeaf) {
-                backRectW += 8;
-                backRectX -= 15;
-            }
-            keyShape.attr({
-                width: backRectW,
-                height: bbox.height + 4,
-                x: backRectX,
+            const labelBBox = label.getBBox();
+            const icon = group.addShape('circle', {
+                attrs: {
+                    x: labelBBox.maxX + 10,
+                    y: (labelBBox.minY + labelBBox.maxY) / 2,
+                    r: 5,
+                    stroke: '#000',
+                },
+                name: 'circle-shape',
+                draggable: true,
             });
-            return keyShape;
+            const bboxWidth = label.getBBox().width + 20;
+            rect.attr({ width: bboxWidth });
+
+            group.addShape('path', {
+                attrs: {
+                    lineWidth: 1,
+                    fill: '#ccc',
+                    stroke: '#ccc',
+                    path: [
+                        ['M', 0, 0],
+                        ['L', bboxWidth, 0],
+                    ],
+                },
+                name: 'path-shape',
+                draggable: true,
+            });
+
+            return rect;
+        },
+        getAnchorPoints: (type, cfg) => {
+            return [
+                [0, 0.5],
+                [1, 0.5],
+            ];
         },
     });
-    G6.registerEdge(
-        'step-line',
-        {
-            getControlPoints: function getControlPoints(cfg) {
-                const startPoint = cfg.startPoint;
-                const endPoint = cfg.endPoint;
-                return [
-                    startPoint,
-                    {
-                        x: startPoint.x,
-                        y: endPoint.y,
-                    },
-                    endPoint,
-                ];
-            },
-        },
-        'polyline',
-    );
 }

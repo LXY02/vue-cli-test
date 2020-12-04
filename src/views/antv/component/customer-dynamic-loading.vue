@@ -3,9 +3,7 @@
         <p>
             dynamic-loading-data
         </p>
-        <p style="cursor: pointer" @click="removeNode">
-            removeNode
-        </p>
+
         <div id="container"></div>
     </div>
 </template>
@@ -143,144 +141,149 @@
         },
 
         methods: {
-            getData() {
-
-            },
-
-            removeNode() {
-                this.graph.setMode('removeNode');
-            },
-
             initGraph() {
                 const width = document.getElementById('container').scrollWidth;
                 const height = document.getElementById('container').scrollHeight || document.documentElement.clientHeight - 200;
 
-                const minimap = new G6.Minimap({
-                    size: [150, 100]
-                });
-
-                // const toolbar = new G6.ToolBar();
-
-                const graph = new G6.TreeGraph({
+                var graph = new G6.TreeGraph({
                     container: 'container',
                     width,
                     height,
+                    pixelRatio: 2,
+                    renderer: 'svg',
                     modes: {
-                        default: ['collapse-expand', 'drag-canvas', 'zoom-canvas'],
-                        removeNode: ['click-remove-node']
+                        default: ['collapse-expand', 'drag-canvas']
                     },
-                    // fitView: true,
                     fitView: true,
-                    defaultNode: {
-                        type: 'file-node',
-                    },
                     layout: {
-                        type: 'indented',
+                        type: 'compactBox',
                         direction: 'LR',
-                        fixedRoot: true,
-                        // defalutPosition: [0, 800],
-                        getId: function getIsd(d) {
-                            // console.log('d ', d);
+                        defalutPosition: [],
+                        getId: function getId(d) {
                             return d.id;
                         },
                         getHeight: function getHeight() {
                             return 16;
                         },
-                        // getWidth: function getWidth() {
-                        //     return 16;
-                        // },
+                        getWidth: function getWidth() {
+                            return 16;
+                        },
                         getVGap: function getVGap() {
-                            return 20;
+                            return 50;
                         },
                         getHGap: function getHGap() {
-                            return 200;
-                        },
-                        getWidth: function getWidth(d) {
-                            return G6.Util.getTextSize(d.id, 15)[0] + 20;
-                        },
-                    },
-                    // plugins: [minimap, toolbar]
-                    plugins: [minimap]
+                            return 100;
+                        }
+                    }
                 });
-
                 graph.node(function (node) {
-                    // console.log('node ', node);
                     return {
-                        size: 16,
-                        anchorPoints: [
-                            [0, 0.5],
-                            [1, 0.5],
-                        ],
-                        style: {
-                            fill: '#DEE9FF',
-                            stroke: '#5B8FF9',
-                        },
-                        label: node.id,
-                        labelCfg: {
-                            position: node.children && node.children.length > 0 ? 'left' : 'right',
-                        },
+                        // size: 16,
+                        // anchorPoints: [[0, 0.5], [1, 0.5]],
+                        // style: {
+                        //     fill: '#40a9ff',
+                        //     stroke: '#096dd9'
+                        // },
+                        // // type: 'crect',
+                        // label: node.id,
+                        // labelCfg: {
+                        //     // position: node.children && node.children.length > 0 ? 'left' : 'right'
+                        //     position: 'bottom'
+                        // }
+                        // anchorPoints:[[0, 0.5, 1, 0.5]]
+                        type: 'crect'
                     };
                 });
-                let i = 0;
-
+                var i = 0;
                 graph.edge(function () {
                     i++;
                     return {
-                        type: 'step-line',
+                        shape: 'cubic-horizontal',
                         color: '#A3B1BF',
-                        // label: i,
+                        // label: i
                     };
                 });
-
-                graph.data(this.graphData);
+                var data = {
+                    isRoot: true,
+                    id: 'Root',
+                    // style: {
+                    //     fill: 'red'
+                    // },
+                    children: [{
+                        id: 'SubTreeNode1',
+                        raw: {},
+                        children: [{
+                            id: 'SubTreeNode1.1'
+                        }, {
+                            id: 'SubTreeNode1.2',
+                            children: [{
+                                id: 'SubTreeNode1.2.1'
+                            }, {
+                                id: 'SubTreeNode1.2.2'
+                            }, {
+                                id: 'SubTreeNode1.2.3'
+                            }]
+                        }]
+                    }, {
+                        id: 'SubTreeNode2',
+                        children: [{
+                            id: 'SubTreeNode2.1'
+                        }]
+                    }, {
+                        id: 'SubTreeNode3',
+                        children: [{
+                            id: 'SubTreeNode3.1'
+                        }, {
+                            id: 'SubTreeNode3.2'
+                        }, {
+                            id: 'SubTreeNode3.3'
+                        }]
+                    }, {
+                        id: 'SubTreeNode4'
+                    }, {
+                        id: 'SubTreeNode5'
+                    }, {
+                        id: 'SubTreeNode6'
+                    }]
+                };
+                graph.data(data);
                 graph.render();
 
-                let count = 0;
+                var count = 0;
 
-                graph.on('node:click', function (evt) { // 动态加载
-                    console.log('evt ', evt);
-                    const item = evt.item;
+                graph.on('node:click', function (evt) {
+                    var item = evt.item;
 
-                    const nodeId = item.get('id');
-                    const model = item.getModel();
-
-                    console.log('item ', item);
-
-                    console.log('model ', model.nodeType, model);
-
-                    if (model.nodeType === 'special') return;
-
-                    const children = model.children;
+                    var nodeId = item.get('id');
+                    var model = item.getModel();
+                    var children = model.children;
                     if (!children || children.length === 0) {
-                        const childData = [
-                            {
-                                parentId: nodeId,
-                                id: 'child-data-' + count,
-                                type: 'rect',
-                                children: [
-                                    {
-                                        id: 'xxxxxxxxx-' + count,
-                                    },
-                                    {
-                                        id: 'yyyyyyyyy-' + count,
-                                    },
-                                ],
-                            },
-                            {
-                                parentId: nodeId,
-                                id: 'child-data1-' + count,
-                                children: [
-                                    {
-                                        id: 'x11111111-' + count,
-                                    },
-                                    {
-                                        id: 'y11111111-' + count,
-                                    },
-                                ],
-                            },
-                        ];
+                        var childData = [{
+                            id: 'child-data-' + count,
+                            // shape: 'rect',
+                            anchorPoints: [
+                                [0, 0.5], // 左侧中间
+                                [1, 0.5]  // 右侧中间
+                            ],
+                            children: [{
+                                id: 'x-' + count
+                            }, {
+                                id: 'y-' + count
+                            }]
+                        }, {
+                            id: 'child-data1-' + count,
+                            anchorPoints: [
+                                [0, 0.5], // 左侧中间
+                                [1, 0.5]  // 右侧中间
+                            ],
+                            children: [{
+                                id: 'x1-' + count
+                            }, {
+                                id: 'y1-' + count
+                            }]
+                        }];
 
-                        const parentData = graph.findDataById(nodeId);
+                        var parentData = graph.findDataById(nodeId);
                         if (!parentData.children) {
                             parentData.children = [];
                         }
@@ -288,13 +291,14 @@
                         // 如果是一个对象，则使用parentData.children.push(obj)
                         parentData.children = childData;
                         graph.changeData();
+                        graph.refreshPositions();
+
                         count++;
                     }
-                });
-
-                this.graph = graph;
+                })
             }
-        },
+
+        }
     };
 
 </script>

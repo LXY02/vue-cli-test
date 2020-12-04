@@ -37,3 +37,16 @@ addShape: 'text'  'rect' 'path' 'marker'
 
 - behavior: https://g6.antv.vision/zh/docs/api/graphFunc/destroy
 - 关于graph所拥有的一些api：https://www.yuque.com/antv/g6/graph
+
+
+
+![image-20201204165050411](/Users/lhz/Library/Application Support/typora-user-images/image-20201204165050411.png)
+
+
+
+
+
+- 备注
+  - 官方文档：https://g6.antv.vision/zh/docs/api/graphFunc/transform#graphtranslatedx-dy
+  - 语雀文档（这个有搜索功能）：https://www.yuque.com/antv/g6/graph#Oup6X
+

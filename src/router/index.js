@@ -137,7 +137,15 @@ const routes = [
                 component: () => import('../views/antv/component/customer-dynamic-loading.vue')
             }
         ]
-    }
+    },
+    {
+        path: '/selector',
+        name: 'selector',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/css-selector.vue')
+    },
 ]
 
 const router = new VueRouter({

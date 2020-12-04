@@ -180,6 +180,8 @@
 
                 const menu = new G6.Menu();
 
+                const toolbar = new G6.ToolBar();
+
                 const graph = new G6.TreeGraph({
                     container: 'container',
                     width,
@@ -217,7 +219,7 @@
                             return 16;
                         },
                     },
-                    plugins: [tooltip]
+                    plugins: [tooltip, toolbar]
                 });
 
                 graph.node((node) => {

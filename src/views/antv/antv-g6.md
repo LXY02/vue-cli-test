@@ -23,6 +23,9 @@ addShape: 'text'  'rect' 'path' 'marker'
 
 
 
+动态添加数据的例子
+http://antv-2018.alipay.com/zh-cn/g6/3.x/demo/interaction/dynamic-more-data.html
+
 自定义节点状态值改变：https://g6.antv.vision/zh/examples/case/decisionTree#index
 ![image-20201126115629238](/Users/lhz/Library/Application Support/typora-user-images/image-20201126115629238.png)
 
@@ -40,7 +43,17 @@ addShape: 'text'  'rect' 'path' 'marker'
 
 
 
+坐标系： https://g6.antv.vision/zh/docs/manual/advanced/coordinate-system
+
 ![image-20201204165050411](/Users/lhz/Library/Application Support/typora-user-images/image-20201204165050411.png)
+
+**ps: zoomTo用的是canvas坐标系，model里的x，y是point坐标系的，记得转换一下。**
+
+![image-20201207145742376](/Users/lhz/Library/Application Support/typora-user-images/image-20201207145742376.png)
+
+
+
+![image-20201207145850827](/Users/lhz/Library/Application Support/typora-user-images/image-20201207145850827.png)
 
 
 

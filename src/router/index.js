@@ -29,7 +29,7 @@ const routes = [
     {
         path: '/model-test',
         name: 'ModelTest',
-        component: () => import('../views/ModelTest.vue')
+        component: () => import('../views/model-test/ModelTest.vue')
     },
     {
         path: '/href-test',
@@ -95,6 +95,11 @@ const routes = [
         path: '/inner-scroll',
         name: 'InnerScroll',
         component: () => import('../views/inner-scroll.vue')
+    },
+    {
+        path: '/drawer-test',
+        name: 'DrawerTest',
+        component: () => import('../views/drawer-test/drawer-test.vue')
     },
     {
         path: '/antv',

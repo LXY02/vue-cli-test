@@ -28,12 +28,12 @@ const routes = [
     },
     {
         path: '/model-test',
-        name: 'ModelTest',
+        name: 'Model Test',
         component: () => import('../views/model-test/ModelTest.vue')
     },
     {
         path: '/href-test',
-        name: 'ModelTest',
+        name: 'Href Test',
         component: () => import('../views/href-test/href-test.vue')
     },
     {
@@ -151,6 +151,21 @@ const routes = [
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/css-selector.vue')
     },
+    {
+        path: '/validator',
+        name: 'Validator',
+        component: () => import('../views/props-validator/props-validator.vue')
+    },
+    {
+        path: '/render-test',
+        name: 'Render Test',
+        component: () => import('../views/render-test/render-test.vue')
+    },
+    {
+        path: '/modal-test',
+        name: 'Modal Test',
+        component: () => import('../views/modal-test/modal-test.vue')
+    }
 ]
 
 const router = new VueRouter({

@@ -2,6 +2,9 @@
     <div>
         test
         <p @click="testBtn">lalall</p>
+        <p @click="test">lalall----</p>
+        <p @click="testA">testA</p>
+        <p @click="testB">testB</p>
     </div>
 </template>
 
@@ -24,7 +27,11 @@
                 this.$on('test', () => {
                     console.log('test');
                 })
-            }
+            },
+
+            // test() {
+            //     console.log('test');
+            // }
         }
     };
 

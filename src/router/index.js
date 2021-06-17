@@ -10,7 +10,7 @@ const routes = [
     {
         path: '/',
         name: 'Matching',
-        redirect: '/about'
+        redirect: '/table-test'
         // component: Matching
     },
     {
@@ -157,6 +157,11 @@ const routes = [
         component: () => import('../views/props-validator/props-validator.vue')
     },
     {
+        path: '/form-test',
+        name: 'Form Test',
+        component: () => import('../views/form/form-test.vue')
+    },
+    {
         path: '/render-test',
         name: 'Render Test',
         component: () => import('../views/render-test/render-test.vue')
@@ -165,7 +170,55 @@ const routes = [
         path: '/modal-test',
         name: 'Modal Test',
         component: () => import('../views/modal-test/modal-test.vue')
-    }
+    },
+    {
+        path: '/float-test',
+        name: 'Float Test',
+        component: () => import('../views/float-test.vue')
+    },
+    {
+        path: '/antv-design',
+        name: 'Antv Design',
+        component: () => import('../views/antv-design/antv-design.vue'),
+        children: [
+            {
+                name: 'Antv Design Table Test',
+                path: '/antv-design/table-test',
+                component: () => import('../views/antv-design/table-test.vue')
+            }
+        ]
+    },
+    {
+        path: '/table-test',
+        name: 'Table Test',
+        component: () => import('../views/table-test/table-test.vue')
+    },
+    {
+        path: '/viewer-test',
+        name: 'Viewer Test',
+        component: () => import('../views/viewer-test/viewer-test.vue')
+    },
+    {
+        path: '/router-test',
+        name: 'Router Test',
+        component: () => import('../views/router-test/router-test.vue'),
+        beforeEnter: (to, from, next) => {
+            console.log('beforeEnter', to, from, next);
+            next();
+        },
+        children: [
+            {
+                path: '/child-a',
+                name: 'child a',
+                component: () => import('../views/router-test/child-a.vue')
+            },
+            {
+                path: '/child-b',
+                name: 'child b',
+                component: () => import('../views/router-test/child-b.vue')
+            }
+        ]
+    },
 ]
 
 const router = new VueRouter({

@@ -10,11 +10,11 @@
 
 <script>
 
-    import {c} from './mod';
+    // import {c} from './mod';
 
-    console.log(c.show());
+    // console.log(c.show());
 
-    c.add();
+    // c.add();
 
     export default {
         name: 'test-1',
@@ -44,6 +44,7 @@
         methods: {
             onClick() {
                 this.num = Math.random();
+                this.$emit('change', 'aaaa');
             }
         }
     };

@@ -199,6 +199,16 @@ const routes = [
         component: () => import('../views/viewer-test/viewer-test.vue')
     },
     {
+        path: '/crypto-test',
+        name: 'Crypto Test',
+        component: () => import('../views/crypto-test/index.vue')
+    },
+    {
+        path: '/echarts-test',
+        name: 'Echarts Test',
+        component: () => import('../views/echarts/basic.vue')
+    },
+    {
         path: '/router-test',
         name: 'Router Test',
         component: () => import('../views/router-test/router-test.vue'),

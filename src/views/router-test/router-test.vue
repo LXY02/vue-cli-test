@@ -23,7 +23,7 @@
         },
 
         beforeRouteEnter(to, from, next) {
-            console.log('beforeRouteEnter ', to, from, next);
+            console.log('beforeRouteEnter--- ', to, from, next);
             next(vm => {
                 console.log('beforeRouteEnter next callback');
             });
